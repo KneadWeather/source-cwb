@@ -20,6 +20,8 @@ jobs:
       run: npm ci
     - name: Fetch weather data
       run: node index.mjs
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
