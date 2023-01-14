@@ -6,9 +6,12 @@
 > 根據 [使用規範](https://opendata.cwb.gov.tw/about/rules)，氣象資料依 [政府資料開放授權條款（Open Government Data License）](https://data.gov.tw/license) 進行公眾釋出，在使用時必須標註來源為 [交通部中央氣象局](https://www.cwb.gov.tw/)。
 ## API
 本專案每六小時會自動自中央氣象局抓取資料。
-### 資料格式
-本專案均採用 JSON 格式，詳細格式如下。
-```js
+### 縣市鄉鎮名單
+```
+https://knead-weather-api.gnehs.net/districts.json
+```
+### 天氣資料格式
+```json
 [{
   "cityName": "縣市名稱",
   "districtName": "鄉鎮市區",
