@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
-let taiwanDistricts = JSON.parse(fs.readFileSync('./taiwan_districts.json', 'utf8'))
+let districts = JSON.parse(fs.readFileSync('./districts.json', 'utf8'))
 const token = process.env.TOKEN;
 if (!token) {
   throw new Error('No token found!');
@@ -18,7 +18,7 @@ function parseResult(result, folder) {
       geocode: location.geocode,
       lat: location.lat,
       lon: location.lon,
-      zipcode: taiwanDistricts.map(x => x.districts).flat().find(x => x.name === location.locationName).zip,
+      zipcode: districts.map(x => x.districts).flat().find(x => x.name === location.locationName).zip,
       weatherElement: location.weatherElement.map(weatherElement => {
         let elements = []
         let time = weatherElement.time.map(x => x.startTime || x.dataTime)

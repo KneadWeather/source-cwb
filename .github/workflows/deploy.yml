@@ -22,6 +22,8 @@ jobs:
       run: node index.mjs
       env:
         TOKEN: ${{ secrets.TOKEN }}
+    - name: cp districts.json
+      run: cp districts.json dist/districts.json
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
