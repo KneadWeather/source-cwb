@@ -1,0 +1,22 @@
+{
+  "name": "weather-source-cwb",
+  "version": "1.0.0",
+  "description": "中央氣象局天氣來源",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KneadWeather/weather-source-cwb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KneadWeather/weather-source-cwb/issues"
+  },
+  "homepage": "https://github.com/KneadWeather/weather-source-cwb#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
