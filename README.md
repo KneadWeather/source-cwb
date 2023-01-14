@@ -1,16 +1,50 @@
 # weather-source-cwb
 自氣象資料開放平台抓取所有鄉鎮近一週天氣預報，並處理成適合前端使用的資料格式。
-## 如何使用
-請先前往 [氣象資料開放平台](https://opendata.cwb.gov.tw/index) 取得 API 授權碼，並將其設定為環境變數
-```bash
-export TOKEN="CWB-OOOOO-XXXXX-OOOO-XXXX-OOOOOOOOOOO"; node index.mjs
+## 資料授權
+需註明資料來源為 [交通部中央氣象局](https://www.cwb.gov.tw/)。
+
+> 根據 [使用規範](https://opendata.cwb.gov.tw/about/rules)，氣象資料依 [政府資料開放授權條款（Open Government Data License）](https://data.gov.tw/license) 進行公眾釋出，在使用時必須標註來源為 [交通部中央氣象局](https://www.cwb.gov.tw/)。
+## API
+本專案每六小時會自動自中央氣象局抓取資料。
+### 資料格式
+本專案均採用 JSON 格式，詳細格式如下。
+```js
+[{
+  "cityName": "縣市名稱",
+  "districtName": "鄉鎮市區",
+  "geocode": "地區代碼",
+  "lat": "經度",
+  "lon": "緯度",
+  "zipcode": "郵遞區號",
+  "weatherElement": [
+    {
+      "name": "名稱",
+      "description": "描述",
+      "time": ["時間"],
+      "measure": "單位",
+      "values": ["值"]
+    }
+  ]
+}]
 ```
-## 直接使用 API
-本專案每六小時會自動自中央氣象局抓取資料，您可使用本儲存庫資料，API 如下。
 ### 兩日天氣預報
-TODO
+#### 取得該縣市所有鄉鎮
+```
+https://knead-weather-api.gnehs.net/day/{縣市名稱}.json
+```
+#### 取得鄉鎮
+```
+https://knead-weather-api.gnehs.net/day/{縣市名稱}/{鄉鎮名稱}.json
+```
 ### 一週天氣預報
-TODO
+#### 取得該縣市所有鄉鎮
+```
+https://knead-weather-api.gnehs.net/week/{縣市名稱}.json
+```
+#### 取得鄉鎮
+```
+https://knead-weather-api.gnehs.net/week/{縣市名稱}/{鄉鎮名稱}.json
+```
 ### 可用路徑
 基本上就是全台所有鄉鎮的天氣預報，路徑如下。
 ```bash
@@ -841,7 +875,3 @@ TODO
     ├── 雲林縣.json
     └── 高雄市.json
 ```
-## 資料授權
-需註明資料來源為 [交通部中央氣象局](https://www.cwb.gov.tw/)。
-
-> 根據 [使用規範](https://opendata.cwb.gov.tw/about/rules)，氣象資料依 [政府資料開放授權條款（Open Government Data License）](https://data.gov.tw/license) 進行公眾釋出，在使用時必須標註來源為 [交通部中央氣象局](https://www.cwb.gov.tw/)。
